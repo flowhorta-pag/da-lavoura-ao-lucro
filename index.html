@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Da Lavoura ao Lucro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-escuro:#123C2A;
+    --verde-claro:#8BCB45;
+    --verde-claro-hover:#A5DD62;
+    --branco:#FFFFFF;
+    --creme:#F5EEDC;
+    --cinza:#EDEDED;
+    --verde-inter:#2E6B45;
+    --verde-mescuro:#0B291D;
+    --dourado:#D4A017;
+    --texto-escuro:#1a1a1a;
+    --texto-corpo:#333333;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Poppins',sans-serif;color:var(--texto-corpo);line-height:1.6;}
+  h1,h2,h3{font-family:'Poppins',sans-serif;}
+  img{max-width:100%;display:block;}
+  .container{max-width:1140px;margin:0 auto;padding:0 20px;}
+  section{padding:70px 0;}
+  .center-col{display:flex;flex-direction:column;align-items:center;text-align:center;}
+
+  /* Barra de oferta fixa */
+  .barra-oferta{
+    position:fixed;top:0;left:0;width:100%;
+    background:#c0392b;color:#fff;text-align:center;
+    padding:10px 16px;font-weight:700;font-size:14px;
+    z-index:1000;
+  }
+  .selo-seguranca{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--branco);border:1px solid var(--verde-inter);
+    border-radius:30px;padding:8px 18px;font-size:14px;font-weight:700;
+    color:var(--verde-escuro);margin:70px auto 20px;
+  }
+
+  /* Botão CTA pulsante */
+  .btn{
+    display:inline-block;
+    background:var(--verde-claro);
+    color:var(--verde-mescuro);
+    font-weight:800;
+    text-transform:uppercase;
+    padding:18px 32px;
+    border-radius:8px;
+    text-decoration:none;
+    text-align:center;
+    font-size:16px;
+    animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(139,203,69,0.6);}
+    70%{box-shadow:0 0 0 14px rgba(139,203,69,0);}
+    100%{box-shadow:0 0 0 0 rgba(139,203,69,0);}
+  }
+
+  .bg-dark{background:var(--verde-escuro);color:var(--branco);}
+  .bg-dark h1,.bg-dark h2,.bg-dark h3{color:var(--branco);}
+  .bg-dark p, .bg-dark li{color:var(--creme);}
+  .bg-creme{background:var(--creme);color:var(--texto-corpo);}
+  .bg-cinza{background:var(--cinza);color:var(--texto-corpo);}
+  .bg-inter{background:var(--verde-inter);color:var(--branco);}
+  .bg-dourado{background:var(--dourado);color:var(--verde-mescuro);}
+
+  .titulo-marca{
+    text-align:center;font-size:22px;font-weight:800;
+    letter-spacing:1px;color:var(--verde-claro);margin-bottom:10px;
+    text-transform:uppercase;
+  }
+
+  h1{font-size:34px;font-weight:700;text-align:center;}
+  .descricao{font-size:18px;text-align:center;max-width:700px;margin:16px auto 0;}
+
+  .price-old{font-size:20px;text-decoration:line-through;opacity:.7;}
+  .price-new{font-size:42px;font-weight:900;color:var(--verde-claro);}
+  .installment{font-size:16px;margin-top:6px;}
+  .bg-creme .installment,.bg-cinza .installment{color:var(--texto-corpo);}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:30px;}
+  .cards-col{display:flex;flex-direction:column;gap:20px;margin-top:30px;align-items:center;}
+  .card{background:var(--branco);border:1px solid var(--verde-inter);border-radius:12px;padding:24px;text-align:center;max-width:500px;width:100%;}
+  .card h3{margin-bottom:10px;color:var(--texto-escuro);font-size:18px;}
+  .card p{color:var(--texto-corpo);font-size:15px;line-height:1.5;}
+
+  .icone-circulo{
+    width:70px;height:70px;border-radius:50%;
+    border:2px solid var(--verde-escuro);
+    display:flex;align-items:center;justify-content:center;
+    font-size:28px;margin:0 auto 16px;background:var(--branco);
+  }
+
+  ul.check{list-style:none;margin-top:20px;max-width:600px;margin-left:auto;margin-right:auto;}
+  ul.check li{padding-left:28px;position:relative;margin-bottom:10px;font-size:18px;}
+  ul.check li::before{content:"✔";position:absolute;left:0;color:var(--verde-claro);}
+  .bg-dourado ul.check li::before,.bg-dourado li{color:var(--verde-mescuro);}
+
+  details{background:var(--branco);border:1px solid var(--verde-inter);border-radius:8px;margin-bottom:12px;padding:16px 20px;}
+  details summary{font-weight:700;cursor:pointer;color:var(--verde-escuro);font-size:1.15rem;}
+  details p{margin-top:10px;color:var(--texto-corpo);font-size:1rem;}
+
+  .highlight{font-weight:700;color:var(--verde-claro);}
+  .bg-creme .highlight,.bg-cinza .highlight,.bg-inter .highlight,.bg-dourado .highlight{color:var(--verde-escuro);}
+
+  /* Carrossel infinito */
+  .carrossel-wrap{overflow:hidden;width:100%;margin-top:30px;}
+  .carrossel-track{display:flex;gap:20px;width:max-content;animation:scroll 20s linear infinite;}
+  .carrossel-track img{height:220px;border-radius:12px;}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* Temporizador */
+  .timer-box{
+    background:var(--dourado);color:var(--verde-mescuro);
+    text-align:center;padding:40px 20px;border-radius:12px;margin:40px 0;
+  }
+  .timer-box h3{font-size:22px;margin-bottom:16px;}
+  .timer-nums{display:flex;justify-content:center;gap:20px;font-size:32px;font-weight:800;margin-bottom:20px;}
+  .timer-nums span{display:block;font-size:12px;font-weight:400;}
+
+  /* Selo garantia SVG */
+  .garantia-card{
+    background:var(--branco);border-radius:16px;padding:40px 32px;
+    max-width:480px;margin:0 auto;text-align:center;
+    box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  }
+  .garantia-lista{list-style:none;padding:0;margin:0 0 20px;text-align:left;display:inline-block;}
+  .garantia-lista li{color:var(--texto-corpo);font-size:15px;margin-bottom:8px;background:#eef6ee;padding:10px 14px;border-radius:8px;}
+  .garantia-destaque{font-weight:700;color:var(--verde-escuro);font-size:15px;margin-bottom:12px;}
+  .garantia-rodape{color:#666;font-size:13px;}
+
+  footer{background:var(--verde-mescuro);color:var(--creme);text-align:center;padding:30px 0;font-size:14px;}
+
+  @media(max-width:768px){
+    section{padding:48px 0;}
+    h1{font-size:26px;}
+    h2{font-size:22px;}
+    .price-new{font-size:34px;}
+    .selo-seguranca{margin-top:80px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- BARRA DE OFERTA FIXA -->
+<div class="barra-oferta" id="barraOferta">⚡ OFERTA ESPECIAL DISPONÍVEL APENAS HOJE</div>
+
+<!-- 1. HERO -->
+<section class="bg-dark center-col" style="padding-top:110px;">
+  <div class="container center-col">
+    <div class="selo-seguranca">🔒 Compra 100% segura e protegida</div>
+
+    <p class="titulo-marca">DA LAVOURA AO LUCRO</p>
+    <h1>Você produz, colhe e vende, mas ainda não sabe quanto realmente sobra?</h1>
+
+    <img src="imagem-1-abertura-da-pagina-pc.png" alt="Produtor na lavoura com prancheta" style="max-width:600px;margin:24px 0;">
+
+    <p class="descricao">Conheça um método prático para organizar os custos da sua propriedade, calcular o preço de venda e tomar decisões mais seguras na produção de hortifrúti.</p>
+    <p class="descricao" style="margin-top:12px;">O <strong>Da Lavoura ao Lucro</strong> foi desenvolvido para ajudar produtores rurais a compreender melhor os números da propriedade, identificar os custos da produção e transformar informações financeiras em decisões mais claras.</p>
+
+    <ul class="check">
+      <li>Manual completo em PDF</li>
+      <li>Planilha prática em Excel</li>
+      <li>Orientações para organizar custos, receitas, fluxo de caixa e resultados</li>
+      <li>Conteúdo aplicado à realidade da produção rural</li>
+    </ul>
+
+    <div style="margin-top:30px;">
+      <span class="price-old">R$ 97,00</span><br>
+      <span class="price-new">R$ 67,00</span> <span>à vista</span>
+      <p class="installment">Ou em até 10 parcelas de R$ 8,05</p>
+    </div>
+
+    <div style="margin-top:24px;">
+      <a href="https://pay.hotmart.com/J106945108C" class="btn">Quero Organizar os Números da Minha Propriedade</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. IDENTIFICAÇÃO COM O PROBLEMA -->
+<section class="bg-creme center-col">
+  <div class="container center-col">
+    <img src="imagem-2-problema-financeiro-pc.png" alt="Produtor analisando contas" style="max-width:600px;margin-bottom:30px;">
+    <h2>Uma boa produção não garante, sozinha, um bom resultado</h2>
+    <p class="descricao">A lavoura pode estar bonita. A colheita pode ter sido boa. As vendas podem ter acontecido. Mesmo assim, o dinheiro pode não sobrar como você esperava.</p>
+    <p class="descricao" style="margin-top:12px;">Isso acontece quando o produtor não consegue visualizar com clareza:</p>
+    <ul class="check">
+      <li>Quanto realmente custa cada cultura</li>
+      <li>Quais despesas estão reduzindo o resultado</li>
+      <li>Quanto custa produzir cada quilo, caixa, maço ou unidade</li>
+      <li>Se o preço de venda cobre todos os custos envolvidos</li>
+      <li>Quanto precisa vender para alcançar o ponto de equilíbrio</li>
+    </ul>
+    <p class="descricao highlight" style="margin-top:20px;">Produzir bastante não significa, necessariamente, lucrar bastante.</p>
+  </div>
+</section>
+
+<!-- 3. SITUAÇÕES COMUNS -->
+<section class="bg-dark">
+  <div class="container">
+    <h2 class="center-col" style="text-align:center;">Você se identifica com alguma destas situações?</h2>
+    <div class="cards">
+      <div class="card"><div class="icone-circulo">📓</div><h3>Anotações incompletas</h3><p>Anota parte dos gastos, mas não consegue organizar todas as informações.</p></div>
+      <div class="card"><div class="icone-circulo">📊</div><h3>Preço no "achismo"</h3><p>Define o preço observando o mercado ou o que outros produtores cobram.</p></div>
+      <div class="card"><div class="icone-circulo">💰</div><h3>Vende, mas não sabe o resultado</h3><p>Vende bastante, mas não sabe exatamente quanto sobrou.</p></div>
+      <div class="card"><div class="icone-circulo">🏠</div><h3>Mistura de contas</h3><p>Mistura despesas da propriedade com despesas da família.</p></div>
+      <div class="card"><div class="icone-circulo">⛽</div><h3>Custos esquecidos</h3><p>Esquece combustível, manutenção, embalagens, máquinas e equipamentos.</p></div>
+      <div class="card"><div class="icone-circulo">🌱</div><h3>Plantio sem simulação</h3><p>Planta novamente sem simular custos e possível resultado.</p></div>
+    </div>
+    <p class="descricao highlight" style="margin-top:30px;text-align:center;">O problema não está necessariamente na falta de trabalho.</p>
+  </div>
+</section>
+
+<!-- 4. MUDANÇA DE PERSPECTIVA -->
+<section class="bg-creme center-col">
+  <div class="container center-col">
+    <img src="imagem-4-custos-invisiveis-pc.png" alt="Produtor em frente à estufa" style="max-width:600px;margin-bottom:30px;">
+    <h2>O produtor precisa conhecer mais do que o valor das vendas</h2>
+    <p class="descricao">Existem três informações que precisam ser analisadas de forma diferente:</p>
+    <div class="cards" style="margin-top:20px;">
+      <div class="card"><h3>Faturamento</h3><p>Valor total obtido com as vendas.</p></div>
+      <div class="card"><h3>Caixa</h3><p>Dinheiro disponível, considerando entradas e saídas.</p></div>
+      <div class="card"><h3>Resultado</h3><p>O que permanece após os custos da produção e operação.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. APRESENTAÇÃO DO MÉTODO -->
+<section class="bg-dark">
+  <div class="container center-col">
+    <h2>Uma forma mais prática de olhar para a gestão da propriedade</h2>
+    <p class="descricao">Você não precisa ser contador, administrador ou especialista em planilhas para começar.</p>
+    <div class="cards">
+      <div class="card"><h3>1. Registrar</h3><p>Anote entradas, despesas e informações importantes da produção.</p></div>
+      <div class="card"><h3>2. Calcular</h3><p>Organize os custos e descubra quanto realmente está sendo gasto.</p></div>
+      <div class="card"><h3>3. Comparar</h3><p>Analise culturas, preços, cenários e possíveis resultados.</p></div>
+      <div class="card"><h3>4. Decidir</h3><p>Use os números da propriedade como apoio para as próximas decisões.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CONTEÚDO DO MANUAL -->
+<section class="bg-cinza center-col">
+  <div class="container center-col">
+    <h2>Conheça os principais conteúdos do Da Lavoura ao Lucro</h2>
+    <ul class="check" style="margin-top:20px;">
+      <li>Diferença entre faturamento, lucro e fluxo de caixa</li>
+      <li>Custos fixos, variáveis, diretos e indiretos</li>
+      <li>Custos que passam despercebidos</li>
+      <li>Máquinas, equipamentos, manutenção e depreciação</li>
+      <li>Custo por quilo, caixa, maço ou unidade</li>
+      <li>Preço mínimo de venda e markup</li>
+      <li>Margem de contribuição e ponto de equilíbrio</li>
+      <li>Comparação entre culturas e planejamento de safra</li>
+    </ul>
+    <img src="mockup-manual-pc.png" alt="Mockup do Manual" style="max-width:500px;margin-top:30px;">
+  </div>
+</section>
+
+<!-- 7. CARROSSEL MANUAL -->
+<section class="bg-dark">
+  <div class="container">
+    <h2 style="text-align:center;">Um manual para consultar durante a rotina da propriedade</h2>
+    <div class="carrossel-wrap">
+      <div class="carrossel-track">
+        <img src="manual-interno-1-pc.png" alt="Manual interno 1">
+        <img src="manual-interno-2-pc.png" alt="Manual interno 2">
+        <img src="manual-interno-3-pc.png" alt="Manual interno 3">
+        <img src="manual-interno-1-pc.png" alt="Manual interno 1">
+        <img src="manual-interno-2-pc.png" alt="Manual interno 2">
+        <img src="manual-interno-3-pc.png" alt="Manual interno 3">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. PLANILHA EM EXCEL -->
+<section class="bg-creme center-col">
+  <div class="container center-col">
+    <img src="3-gestao-organizada-pc.png" alt="Produtor com tablet e planilha" style="max-width:600px;margin-bottom:30px;">
+    <h2>Planilha Da Lavoura ao Lucro, em Excel</h2>
+    <p class="descricao">Você não recebe apenas o conteúdo. Recebe também uma ferramenta para começar a aplicar o método.</p>
+    <ul class="check" style="margin-top:20px;">
+      <li>Lançamentos de despesas e receitas</li>
+      <li>Fluxo de caixa</li>
+      <li>Custos Operacionais Efetivos (COE) e Totais (COT)</li>
+      <li>Formação de preço e ponto de equilíbrio</li>
+      <li>Simulação de cenários</li>
+      <li>Margem de contribuição</li>
+    </ul>
+    <p class="descricao" style="margin-top:16px;font-size:14px;opacity:.8;">A planilha é uma ferramenta de apoio à organização e à análise. Os resultados dependem da qualidade das informações inseridas.</p>
+  </div>
+</section>
+
+<!-- 9. CARROSSEL RECURSOS DA PLANILHA + TEMPORIZADOR -->
+<section class="bg-dark">
+  <div class="container">
+    <h2 style="text-align:center;">Transforme os registros da propriedade em informações úteis para decidir</h2>
+    <div class="carrossel-wrap">
+      <div class="carrossel-track">
+        <img src="lancamentos-pc.png" alt="Lançamentos">
+        <img src="fluxo-de-caixa-pc.png" alt="Fluxo de caixa">
+        <img src="coe+cot-pc.png" alt="COE e COT">
+        <img src="preco-e-pe-pc.png" alt="Preço e ponto de equilíbrio">
+        <img src="cenarios-pc.png" alt="Cenários">
+        <img src="mc-margem-contribuicao-pc.png" alt="Margem de contribuição">
+        <img src="lancamentos-pc.png" alt="Lançamentos">
+        <img src="fluxo-de-caixa-pc.png" alt="Fluxo de caixa">
+        <img src="coe+cot-pc.png" alt="COE e COT">
+        <img src="preco-e-pe-pc.png" alt="Preço e ponto de equilíbrio">
+        <img src="cenarios-pc.png" alt="Cenários">
+        <img src="mc-margem-contribuicao-pc.png" alt="Margem de contribuição">
+      </div>
+    </div>
+
+    <div class="timer-box">
+      <h3>Organize as finanças da sua lavoura com o método Da Lavoura ao Lucro.</h3>
+      <div class="timer-nums">
+        <div>00<span>Minutos</span></div>
+        <div>00<span>Segundos</span></div>
+      </div>
+      <a href="https://pay.hotmart.com/J106945108C" class="btn">Quero Acessar o Manual e a Planilha</a>
+    </div>
+  </div>
+</section>
+
+<!-- 10. PARA QUEM É -->
+<section class="bg-dourado center-col">
+  <div class="container center-col">
+    <h2>O Da Lavoura ao Lucro foi pensado para você que:</h2>
+    <ul class="check">
+      <li>Produz hortaliças, frutas ou outros produtos de hortifrúti</li>
+      <li>Trabalha em uma pequena ou média propriedade</li>
+      <li>Deseja organizar melhor os gastos da produção</li>
+      <li>Quer entender o custo real da sua atividade</li>
+      <li>Precisa tomar decisões com mais clareza</li>
+      <li>Deseja analisar preços, custos, margem e ponto de equilíbrio</li>
+    </ul>
+    <p class="descricao" style="margin-top:20px;font-size:18px;">A análise deve considerar o tamanho da produção, os custos existentes, o sistema de cultivo, a comercialização e as condições de cada produtor.</p>
+  </div>
+</section>
+
+<!-- 11. PARA QUEM NÃO É -->
+<section class="bg-inter center-col">
+  <div class="container center-col">
+    <h2>⚠️ Este material não foi criado para:</h2>
+    <ul class="check" style="color:var(--creme);">
+      <li>Substituir um contador, administrador ou consultor especializado</li>
+      <li>Apresentar uma fórmula de lucro garantido</li>
+      <li>Prometer que toda propriedade terá o mesmo resultado</li>
+      <li>Eliminar os riscos naturais da atividade rural</li>
+    </ul>
+    <p class="descricao" style="margin-top:20px;font-size:18px;">A proposta é oferecer conhecimento e ferramentas para apoiar uma gestão mais organizada.</p>
+  </div>
+</section>
+
+<!-- 12. SOBRE O PRODUTOR (sem nome/foto) -->
+<section class="bg-creme">
+  <div class="container center-col">
+    <h2 style="font-size:28px;">O produtor por trás do manual</h2>
+    <p style="font-weight:700;font-size:18px;margin-top:6px;">Engenheiro Agrônomo e Produtor Rural</p>
+    <p class="descricao" style="margin-top:16px;">Ao longo de sua formação profissional, atuou como RTV (Representante Técnico de Vendas) de fertilizantes, acompanhando de perto a realidade de diferentes produtores e sistemas de cultivo em campo.</p>
+    <p class="descricao" style="margin-top:16px;">Essa vivência técnica, aliada à experiência direta na produção rural, revelou um desafio recorrente: a falta de clareza na gestão financeira das propriedades, muitas vezes negligenciada em meio às demandas operacionais do dia a dia.</p>
+    <p class="descricao" style="margin-top:16px;">Foi a partir dessa percepção prática que nasceu este material: uma ferramenta pensada por quem entende tanto da lavoura quanto dos números, com o objetivo de tornar a gestão rural mais acessível, organizada e estratégica.</p>
+  </div>
+</section>
+
+<!-- 13. O QUE VOCÊ RECEBE -->
+<section class="bg-dark">
+  <div class="container">
+    <h2 style="text-align:center;">Tenha o manual e a planilha para organizar melhor a gestão da sua propriedade</h2>
+    <div class="cards-col">
+      <div class="card"><h3>📘 Manual completo em PDF</h3><p>Conteúdo prático sobre gestão rural, custos, preços, margem, ponto de equilíbrio e planejamento.</p></div>
+      <div class="card"><h3>📊 Planilha prática em Excel</h3><p>Um único arquivo com abas para lançamentos, fluxo de caixa, COE, COT, preço, cenários e margem.</p></div>
+      <div class="card"><h3>💾 Acesso digital</h3><p>Baixe os arquivos e guarde o material para consultar quando precisar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. CONDIÇÃO COMERCIAL -->
+<section class="bg-dark" id="comprar">
+  <div class="container center-col">
+    <h2>Comece a organizar os números da sua propriedade</h2>
+    <div style="margin:30px 0;">
+      <span class="price-old">De R$ 97,00</span><br>
+      <span class="price-new">R$ 67,00</span> à vista
+      <p class="installment">Ou em até 10 parcelas de R$ 8,05</p>
+    </div>
+    <a href="https://pay.hotmart.com/J106945108C" class="btn">Quero Acessar o Manual e a Planilha</a>
+    <p style="margin-top:16px;font-size:13px;opacity:.8;">Pagamento processado pela Hotmart.</p>
+  </div>
+</section>
+
+<!-- 15. GARANTIA -->
+<section class="bg-creme">
+  <div class="container">
+    <div class="garantia-card">
+      <svg width="140" height="140" viewBox="0 0 140 140" style="margin:0 auto 20px;">
+        <circle cx="70" cy="70" r="65" fill="#1a5c3a" stroke="#c9a227" stroke-width="4"/>
+        <circle cx="70" cy="70" r="55" fill="none" stroke="#c9a227" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="70" y="60" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">GARANTIA</text>
+        <text x="70" y="88" text-anchor="middle" fill="#c9a227" font-size="36" font-weight="800">7</text>
+        <text x="70" y="105" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">DIAS</text>
+      </svg>
+      <h3 style="color:var(--verde-escuro);font-size:22px;margin-bottom:12px;">GARANTIA INCONDICIONAL DE 7 DIAS</h3>
+      <p style="margin-bottom:16px;">Se, a qualquer momento dentro dos 7 dias, você achar que:</p>
+      <ul class="garantia-lista">
+        <li>✓ O material não faz sentido para você</li>
+        <li>✓ O manual não atende sua necessidade</li>
+        <li>✓ Ou simplesmente não quer continuar</li>
+      </ul>
+      <p class="garantia-destaque">É só pedir o reembolso — sem burocracia e sem explicação obrigatória.</p>
+      <p class="garantia-rodape">Essa garantia existe porque acreditamos no valor prático de Da Lavoura ao Lucro.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16. FAQ -->
+<section class="bg-dark">
+  <div class="container" style="max-width:800px;">
+    <h2 style="text-align:center;">Perguntas frequentes</h2>
+    <div style="margin-top:30px;">
+      <details><summary>O que está incluído na compra?</summary><p>Você receberá o manual em PDF e uma planilha prática em Excel, com diferentes abas para apoiar o controle e a análise da propriedade.</p></details>
+      <details><summary>Como receberei o material?</summary><p>Após a confirmação da compra, as orientações de acesso serão enviadas para o e-mail utilizado na compra, conforme as orientações da Hotmart.</p></details>
+      <details><summary>Posso baixar os arquivos?</summary><p>Sim. Após a confirmação da compra, você poderá baixar os arquivos e guardar o material.</p></details>
+      <details><summary>Preciso saber Excel ou contabilidade?</summary><p>Não é necessário conhecimento avançado. O material foi organizado para facilitar o preenchimento.</p></details>
+      <details><summary>A planilha serve para qualquer tipo de propriedade?</summary><p>Pode ser usada como ferramenta de organização, mas os dados precisam ser adaptados à realidade da atividade.</p></details>
+      <details><summary>O material é apenas para produtores de hortifrúti?</summary><p>O foco principal é hortifrúti, mas muitos conceitos podem ser úteis em outras atividades rurais.</p></details>
+      <details><summary>O manual garante lucro?</summary><p>Não. O manual não promete lucro garantido nem elimina os riscos da atividade rural.</p></details>
+      <details><summary>Como funciona o parcelamento?</summary><p>R$ 67,00 à vista ou em até 10 parcelas de R$ 8,05, conforme as opções na página de pagamento.</p></details>
+      <details><summary>Existe prazo para solicitar o cancelamento?</summary><p>Sim. A compra conta com prazo de 7 dias, conforme os termos da Hotmart.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 17. CHAMADA FINAL -->
+<section class="bg-dark">
+  <div class="container center-col">
+    <img src="5-precificacao-pc.png" alt="Produtor analisando documentos" style="max-width:600px;margin-bottom:30px;">
+    <h2>A sua propriedade já produz. Agora, os números também precisam fazer parte das decisões.</h2>
+    <ul class="check" style="margin-top:20px;">
+      <li>Quanto custa produzir</li>
+      <li>Quanto precisa ser vendido</li>
+      <li>Qual preço deve ser analisado</li>
+      <li>Onde estão os principais gastos</li>
+      <li>Qual atividade contribui mais para o resultado</li>
+    </ul>
+    <div style="margin-top:24px;">
+      <span class="price-old">De R$ 97,00</span><br>
+      <span class="price-new">R$ 67,00</span> à vista
+      <p class="installment">Ou em até 10 parcelas de R$ 8,05</p>
+    </div>
+    <a href="https://pay.hotmart.com/J106945108C" class="btn" style="margin-top:20px;">Quero Organizar a Gestão da Minha Propriedade</a>
+  </div>
+</section>
+
+<footer>
+  <p>© Da Lavoura ao Lucro. Pagamento processado pela Hotmart.</p>
+</footer>
+
+<script>
+  // Data dinâmica na barra de oferta
+  const hoje = new Date();
+  const dataFormatada = hoje.toLocaleDateString('pt-BR');
+  document.getElementById('barraOferta').innerText = `⚡ OFERTA ESPECIAL DISPONÍVEL APENAS HOJE ${dataFormatada}`;
+
+  // Timer regressivo (30 minutos, reinicia a cada acesso)
+  let minutos = 29, segundos = 59;
+  const timerEl = document.querySelector('.timer-nums');
+  setInterval(() => {
+    if(segundos === 0){
+      if(minutos === 0){ minutos=29; segundos=59; } else { minutos--; segundos=59; }
+    } else { segundos--; }
+    timerEl.innerHTML = `<div>${String(minutos).padStart(2,'0')}<span>Minutos</span></div><div>${String(segundos).padStart(2,'0')}<span>Segundos</span></div>`;
+  }, 1000);
+</script>
+
+</body>
+</html>
