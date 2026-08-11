@@ -29,7 +29,6 @@
   section{padding:70px 0;}
   .center-col{display:flex;flex-direction:column;align-items:center;text-align:center;}
 
-  /* Barra de oferta fixa */
   .barra-oferta{
     position:fixed;top:0;left:0;width:100%;
     background:#c0392b;color:#fff;text-align:center;
@@ -43,7 +42,6 @@
     color:var(--verde-escuro);margin:70px auto 20px;
   }
 
-  /* Botão CTA pulsante */
   .btn{
     display:inline-block;
     background:var(--verde-claro);
@@ -110,7 +108,6 @@
   .highlight{font-weight:700;color:var(--verde-claro);}
   .bg-creme .highlight,.bg-cinza .highlight,.bg-inter .highlight,.bg-dourado .highlight{color:var(--verde-escuro);}
 
-  /* Carrossel infinito */
   .carrossel-wrap{overflow:hidden;width:100%;margin-top:30px;}
   .carrossel-track{display:flex;gap:20px;width:max-content;animation:scroll 20s linear infinite;}
   .carrossel-track img{height:220px;border-radius:12px;}
@@ -119,7 +116,6 @@
     100%{transform:translateX(-50%);}
   }
 
-  /* Temporizador */
   .timer-box{
     background:var(--dourado);color:var(--verde-mescuro);
     text-align:center;padding:40px 20px;border-radius:12px;margin:40px 0;
@@ -128,7 +124,6 @@
   .timer-nums{display:flex;justify-content:center;gap:20px;font-size:32px;font-weight:800;margin-bottom:20px;}
   .timer-nums span{display:block;font-size:12px;font-weight:400;}
 
-  /* Selo garantia SVG */
   .garantia-card{
     background:var(--branco);border-radius:16px;padding:40px 32px;
     max-width:480px;margin:0 auto;text-align:center;
@@ -163,7 +158,10 @@
     <p class="titulo-marca">DA LAVOURA AO LUCRO</p>
     <h1>Você produz, colhe e vende, mas ainda não sabe quanto realmente sobra?</h1>
 
-    <img src="imagem-1-abertura-da-pagina-pc.png" alt="Produtor na lavoura com prancheta" style="max-width:600px;margin:24px 0;">
+    <picture>
+      <source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-1-mobile.png">
+      <img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-1-pc.png" alt="Produtor na lavoura com prancheta" style="max-width:600px;margin:24px 0;">
+    </picture>
 
     <p class="descricao">Conheça um método prático para organizar os custos da sua propriedade, calcular o preço de venda e tomar decisões mais seguras na produção de hortifrúti.</p>
     <p class="descricao" style="margin-top:12px;">O <strong>Da Lavoura ao Lucro</strong> foi desenvolvido para ajudar produtores rurais a compreender melhor os números da propriedade, identificar os custos da produção e transformar informações financeiras em decisões mais claras.</p>
@@ -190,7 +188,10 @@
 <!-- 2. IDENTIFICAÇÃO COM O PROBLEMA -->
 <section class="bg-creme center-col">
   <div class="container center-col">
-    <img src="imagem-2-problema-financeiro-pc.png" alt="Produtor analisando contas" style="max-width:600px;margin-bottom:30px;">
+    <picture>
+      <source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-2-mobile.png">
+      <img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-2-pc.png" alt="Produtor analisando contas" style="max-width:600px;margin-bottom:30px;">
+    </picture>
     <h2>Uma boa produção não garante, sozinha, um bom resultado</h2>
     <p class="descricao">A lavoura pode estar bonita. A colheita pode ter sido boa. As vendas podem ter acontecido. Mesmo assim, o dinheiro pode não sobrar como você esperava.</p>
     <p class="descricao" style="margin-top:12px;">Isso acontece quando o produtor não consegue visualizar com clareza:</p>
@@ -224,7 +225,10 @@
 <!-- 4. MUDANÇA DE PERSPECTIVA -->
 <section class="bg-creme center-col">
   <div class="container center-col">
-    <img src="imagem-4-custos-invisiveis-pc.png" alt="Produtor em frente à estufa" style="max-width:600px;margin-bottom:30px;">
+    <picture>
+      <source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-3-mobile.png">
+      <img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-3-pc.png" alt="Produtor em frente à estufa" style="max-width:600px;margin-bottom:30px;">
+    </picture>
     <h2>O produtor precisa conhecer mais do que o valor das vendas</h2>
     <p class="descricao">Existem três informações que precisam ser analisadas de forma diferente:</p>
     <div class="cards" style="margin-top:20px;">
@@ -263,7 +267,10 @@
       <li>Margem de contribuição e ponto de equilíbrio</li>
       <li>Comparação entre culturas e planejamento de safra</li>
     </ul>
-    <img src="mockup-manual-pc.png" alt="Mockup do Manual" style="max-width:500px;margin-top:30px;">
+    <picture>
+      <source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-4-mobile.png">
+      <img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-4-pc.png" alt="Mockup do Manual" style="max-width:500px;margin-top:30px;">
+    </picture>
   </div>
 </section>
 
@@ -273,12 +280,12 @@
     <h2 style="text-align:center;">Um manual para consultar durante a rotina da propriedade</h2>
     <div class="carrossel-wrap">
       <div class="carrossel-track">
-        <img src="manual-interno-1-pc.png" alt="Manual interno 1">
-        <img src="manual-interno-2-pc.png" alt="Manual interno 2">
-        <img src="manual-interno-3-pc.png" alt="Manual interno 3">
-        <img src="manual-interno-1-pc.png" alt="Manual interno 1">
-        <img src="manual-interno-2-pc.png" alt="Manual interno 2">
-        <img src="manual-interno-3-pc.png" alt="Manual interno 3">
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-5-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-5-pc.png" alt="Manual interno 1"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-6-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-6-pc.png" alt="Manual interno 2"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-7-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-7-pc.png" alt="Manual interno 3"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-5-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-5-pc.png" alt="Manual interno 1"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-6-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-6-pc.png" alt="Manual interno 2"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-7-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-7-pc.png" alt="Manual interno 3"></picture>
       </div>
     </div>
   </div>
@@ -287,7 +294,10 @@
 <!-- 8. PLANILHA EM EXCEL -->
 <section class="bg-creme center-col">
   <div class="container center-col">
-    <img src="3-gestao-organizada-pc.png" alt="Produtor com tablet e planilha" style="max-width:600px;margin-bottom:30px;">
+    <picture>
+      <source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-8-mobile.png">
+      <img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-8-pc.png" alt="Produtor com tablet e planilha" style="max-width:600px;margin-bottom:30px;">
+    </picture>
     <h2>Planilha Da Lavoura ao Lucro, em Excel</h2>
     <p class="descricao">Você não recebe apenas o conteúdo. Recebe também uma ferramenta para começar a aplicar o método.</p>
     <ul class="check" style="margin-top:20px;">
@@ -308,18 +318,18 @@
     <h2 style="text-align:center;">Transforme os registros da propriedade em informações úteis para decidir</h2>
     <div class="carrossel-wrap">
       <div class="carrossel-track">
-        <img src="lancamentos-pc.png" alt="Lançamentos">
-        <img src="fluxo-de-caixa-pc.png" alt="Fluxo de caixa">
-        <img src="coe+cot-pc.png" alt="COE e COT">
-        <img src="preco-e-pe-pc.png" alt="Preço e ponto de equilíbrio">
-        <img src="cenarios-pc.png" alt="Cenários">
-        <img src="mc-margem-contribuicao-pc.png" alt="Margem de contribuição">
-        <img src="lancamentos-pc.png" alt="Lançamentos">
-        <img src="fluxo-de-caixa-pc.png" alt="Fluxo de caixa">
-        <img src="coe+cot-pc.png" alt="COE e COT">
-        <img src="preco-e-pe-pc.png" alt="Preço e ponto de equilíbrio">
-        <img src="cenarios-pc.png" alt="Cenários">
-        <img src="mc-margem-contribuicao-pc.png" alt="Margem de contribuição">
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-9-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-9-pc.png" alt="Lançamentos"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-10-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-10-pc.png" alt="Fluxo de caixa"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-11-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-11-pc.png" alt="COE e COT"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-12-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-12-pc.png" alt="Preço e ponto de equilíbrio"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-13-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-13-pc.png" alt="Cenários"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-14-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-14-pc.png" alt="Margem de contribuição"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-9-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-9-pc.png" alt="Lançamentos"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-10-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-10-pc.png" alt="Fluxo de caixa"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-11-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-11-pc.png" alt="COE e COT"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-12-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-12-pc.png" alt="Preço e ponto de equilíbrio"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-13-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-13-pc.png" alt="Cenários"></picture>
+        <picture><source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-14-mobile.png"><img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/interno-14-pc.png" alt="Margem de contribuição"></picture>
       </div>
     </div>
 
@@ -446,7 +456,10 @@
 <!-- 17. CHAMADA FINAL -->
 <section class="bg-dark">
   <div class="container center-col">
-    <img src="5-precificacao-pc.png" alt="Produtor analisando documentos" style="max-width:600px;margin-bottom:30px;">
+    <picture>
+      <source media="(max-width:768px)" srcset="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-15-mobile.png">
+      <img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-15-pc.png" alt="Produtor analisando documentos" style="max-width:600px;margin-bottom:30px;">
+    </picture>
     <h2>A sua propriedade já produz. Agora, os números também precisam fazer parte das decisões.</h2>
     <ul class="check" style="margin-top:20px;">
       <li>Quanto custa produzir</li>
@@ -469,12 +482,10 @@
 </footer>
 
 <script>
-  // Data dinâmica na barra de oferta
   const hoje = new Date();
   const dataFormatada = hoje.toLocaleDateString('pt-BR');
   document.getElementById('barraOferta').innerText = `⚡ OFERTA ESPECIAL DISPONÍVEL APENAS HOJE ${dataFormatada}`;
 
-  // Timer regressivo (30 minutos, reinicia a cada acesso)
   let minutos = 29, segundos = 59;
   const timerEl = document.querySelector('.timer-nums');
   setInterval(() => {
