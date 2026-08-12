@@ -22,11 +22,14 @@
     --texto-corpo:#333333;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
+
+  html,body{overflow-x:hidden;width:100%;}
+
   body{font-family:'Poppins',sans-serif;color:var(--texto-corpo);line-height:1.6;}
   h1,h2,h3{font-family:'Poppins',sans-serif;}
   img{max-width:100%;display:block;}
-  .container{max-width:1140px;margin:0 auto;padding:0 20px;}
-  section{padding:70px 0;}
+  .container{max-width:1140px;margin:0 auto;padding:0 20px;width:100%;}
+  section{padding:70px 0;width:100%;}
   .center-col{display:flex;flex-direction:column;align-items:center;text-align:center;}
 
   .barra-oferta{
@@ -87,7 +90,7 @@
   .cards-col{display:flex;flex-direction:column;gap:20px;margin-top:30px;align-items:center;}
   .card{background:var(--branco);border:1px solid var(--verde-inter);border-radius:12px;padding:24px;text-align:center;max-width:500px;width:100%;}
   .card h3{margin-bottom:10px;color:var(--texto-escuro);font-size:18px;}
-  .card p{color:var(--texto-corpo);font-size:15px;line-height:1.5;}
+  .card p{color:var(--texto-corpo);font-size:16px;line-height:1.5;}
 
   .icone-circulo{
     width:70px;height:70px;border-radius:50%;
@@ -108,9 +111,9 @@
   .highlight{font-weight:700;color:var(--verde-claro);}
   .bg-creme .highlight,.bg-cinza .highlight,.bg-inter .highlight,.bg-dourado .highlight{color:var(--verde-escuro);}
 
-  .carrossel-wrap{overflow:hidden;width:100%;margin-top:30px;}
-  .carrossel-track{display:flex;gap:20px;width:max-content;animation:scroll 20s linear infinite;}
-  .carrossel-track img{height:220px;border-radius:12px;}
+  .carrossel-wrap{overflow:hidden;width:100%;max-width:100%;margin-top:30px;}
+  .carrossel-track{display:flex;gap:20px;width:max-content;animation:scroll 20s linear infinite;will-change:transform;}
+  .carrossel-track img{height:220px;width:auto;max-width:none;border-radius:12px;}
   @keyframes scroll{
     0%{transform:translateX(0);}
     100%{transform:translateX(-50%);}
@@ -130,18 +133,36 @@
     box-shadow:0 4px 20px rgba(0,0,0,0.08);
   }
   .garantia-lista{list-style:none;padding:0;margin:0 0 20px;text-align:left;display:inline-block;}
-  .garantia-lista li{color:var(--texto-corpo);font-size:15px;margin-bottom:8px;background:#eef6ee;padding:10px 14px;border-radius:8px;}
-  .garantia-destaque{font-weight:700;color:var(--verde-escuro);font-size:15px;margin-bottom:12px;}
-  .garantia-rodape{color:#666;font-size:13px;}
+  .garantia-lista li{color:var(--texto-corpo);font-size:16px;margin-bottom:8px;background:#eef6ee;padding:10px 14px;border-radius:8px;}
+  .garantia-destaque{font-weight:700;color:var(--verde-escuro);font-size:16px;margin-bottom:12px;}
+  .garantia-rodape{color:#666;font-size:14px;}
 
-  footer{background:var(--verde-mescuro);color:var(--creme);text-align:center;padding:30px 0;font-size:14px;}
+  footer{background:var(--verde-mescuro);color:var(--creme);text-align:center;padding:30px 0;font-size:15px;}
 
   @media(max-width:768px){
-    section{padding:48px 0;}
-    h1{font-size:26px;}
-    h2{font-size:22px;}
-    .price-new{font-size:34px;}
-    .selo-seguranca{margin-top:80px;}
+    section{padding:48px 0;width:100%;overflow:hidden;}
+    .container{padding:0 16px;}
+
+    h1{font-size:24px;}
+    h2{font-size:21px;}
+    h3{font-size:18px;}
+    .titulo-marca{font-size:18px;}
+    .descricao{font-size:18px;}
+    ul.check li{font-size:18px;}
+    .card h3{font-size:18px;}
+    .card p{font-size:16px;}
+    details summary{font-size:17px;}
+    details p{font-size:16px;}
+    .garantia-lista li{font-size:16px;}
+    .garantia-destaque{font-size:16px;}
+    .garantia-rodape{font-size:14px;}
+    footer{font-size:15px;}
+    .installment{font-size:16px;}
+
+    .price-new{font-size:32px;}
+    .price-old{font-size:18px;}
+    .selo-seguranca{margin-top:80px;font-size:15px;}
+    .btn{font-size:16px;padding:16px 26px;}
   }
 </style>
 </head>
@@ -308,7 +329,7 @@
       <li>Simulação de cenários</li>
       <li>Margem de contribuição</li>
     </ul>
-    <p class="descricao" style="margin-top:16px;font-size:14px;opacity:.8;">A planilha é uma ferramenta de apoio à organização e à análise. Os resultados dependem da qualidade das informações inseridas.</p>
+    <p class="descricao" style="margin-top:16px;opacity:.8;">A planilha é uma ferramenta de apoio à organização e à análise. Os resultados dependem da qualidade das informações inseridas.</p>
   </div>
 </section>
 
@@ -356,7 +377,7 @@
       <li>Precisa tomar decisões com mais clareza</li>
       <li>Deseja analisar preços, custos, margem e ponto de equilíbrio</li>
     </ul>
-    <p class="descricao" style="margin-top:20px;font-size:18px;">A análise deve considerar o tamanho da produção, os custos existentes, o sistema de cultivo, a comercialização e as condições de cada produtor.</p>
+    <p class="descricao" style="margin-top:20px;">A análise deve considerar o tamanho da produção, os custos existentes, o sistema de cultivo, a comercialização e as condições de cada produtor.</p>
   </div>
 </section>
 
@@ -370,7 +391,7 @@
       <li>Prometer que toda propriedade terá o mesmo resultado</li>
       <li>Eliminar os riscos naturais da atividade rural</li>
     </ul>
-    <p class="descricao" style="margin-top:20px;font-size:18px;">A proposta é oferecer conhecimento e ferramentas para apoiar uma gestão mais organizada.</p>
+    <p class="descricao" style="margin-top:20px;">A proposta é oferecer conhecimento e ferramentas para apoiar uma gestão mais organizada.</p>
   </div>
 </section>
 
@@ -407,7 +428,7 @@
       <p class="installment">Ou em até 10 parcelas de R$ 8,05</p>
     </div>
     <a href="https://pay.hotmart.com/J106945108C" class="btn">Quero Acessar o Manual e a Planilha</a>
-    <p style="margin-top:16px;font-size:13px;opacity:.8;">Pagamento processado pela Hotmart.</p>
+    <p style="margin-top:16px;opacity:.8;">Pagamento processado pela Hotmart.</p>
   </div>
 </section>
 
