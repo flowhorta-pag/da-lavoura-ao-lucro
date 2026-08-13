@@ -22,9 +22,7 @@
     --texto-corpo:#333333;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-
   html,body{overflow-x:hidden;width:100%;}
-
   body{font-family:'Poppins',sans-serif;color:var(--texto-corpo);line-height:1.6;}
   h1,h2,h3{font-family:'Poppins',sans-serif;}
   img{max-width:100%;display:block;}
@@ -38,11 +36,13 @@
     padding:10px 16px;font-weight:700;font-size:14px;
     z-index:1000;
   }
+
+  /* AJUSTE 1: espaço reduzido entre a barra fixa e o selo de segurança */
   .selo-seguranca{
     display:inline-flex;align-items:center;gap:8px;
     background:var(--branco);border:1px solid var(--verde-inter);
     border-radius:30px;padding:8px 18px;font-size:14px;font-weight:700;
-    color:var(--verde-escuro);margin:20px auto 8px;
+    color:var(--verde-escuro);margin:8px auto 8px;
   }
 
   .btn{
@@ -72,6 +72,7 @@
   .bg-inter{background:var(--verde-inter);color:var(--branco);}
   .bg-dourado{background:var(--dourado);color:var(--verde-mescuro);}
 
+  /* AJUSTE 2: cor do título igual ao botão CTA, negrito mantido */
   .titulo-marca{
     text-align:center;font-size:30px;font-weight:800;
     letter-spacing:1px;color:var(--verde-claro);margin-bottom:10px;
@@ -104,9 +105,14 @@
   ul.check li::before{content:"✔";position:absolute;left:0;color:var(--verde-claro);}
   .bg-dourado ul.check li::before,.bg-dourado li{color:var(--verde-mescuro);}
 
+  /* AJUSTE 3: classe para alinhar à esquerda somente listas específicas */
+  ul.check.check-left{text-align:left;}
+
   details{background:var(--branco);border:1px solid var(--verde-inter);border-radius:8px;margin-bottom:12px;padding:16px 20px;}
   details summary{font-weight:700;cursor:pointer;color:var(--verde-escuro);font-size:1.15rem;}
-  details p{margin-top:10px;color:var(--texto-corpo);font-size:1rem;}
+
+  /* AJUSTE 4: cor das respostas do FAQ em verde, sem negrito */
+  details p{margin-top:10px;color:var(--verde-escuro);font-weight:400;font-size:1rem;}
 
   .highlight{font-weight:700;color:var(--verde-claro);}
   .bg-creme .highlight,.bg-cinza .highlight,.bg-inter .highlight,.bg-dourado .highlight{color:var(--verde-escuro);}
@@ -139,6 +145,9 @@
 
   footer{background:var(--verde-mescuro);color:var(--creme);text-align:center;padding:30px 0;font-size:15px;}
 
+  /* AJUSTE 5: texto de direitos autorais, fonte 2px menor que a linha acima */
+  footer .direitos-autorais{font-size:13px;margin-top:10px;opacity:.85;}
+
   @media(max-width:768px){
     section{padding:48px 0;width:100%;overflow:hidden;}
     .container{padding:0 16px;}
@@ -157,11 +166,12 @@
     .garantia-destaque{font-size:16px;}
     .garantia-rodape{font-size:14px;}
     footer{font-size:15px;}
+    footer .direitos-autorais{font-size:13px;}
     .installment{font-size:16px;}
 
     .price-new{font-size:32px;}
     .price-old{font-size:18px;}
-    .selo-seguranca{margin-top:80px;font-size:15px;}
+    .selo-seguranca{margin-top:60px;font-size:15px;}
     .btn{font-size:16px;padding:16px 26px;}
   }
 </style>
@@ -172,7 +182,7 @@
 <div class="barra-oferta" id="barraOferta">⚡ OFERTA ESPECIAL DISPONÍVEL APENAS HOJE</div>
 
 <!-- 1. HERO -->
-<section class="bg-dark center-col" style="padding-top:110px;">
+<section class="bg-dark center-col" style="padding-top:80px;">
   <div class="container center-col">
     <div class="selo-seguranca">🔒 Compra 100% segura e protegida</div>
 
@@ -187,7 +197,7 @@
     <p class="descricao">Conheça um método prático para organizar os custos da sua propriedade, calcular o preço de venda e tomar decisões mais seguras na produção de hortifrúti.</p>
     <p class="descricao" style="margin-top:12px;">O <strong>Da Lavoura ao Lucro</strong> foi desenvolvido para ajudar produtores rurais a compreender melhor os números da propriedade, identificar os custos da produção e transformar informações financeiras em decisões mais claras.</p>
 
-    <ul class="check">
+    <ul class="check check-left">
       <li>Manual completo em PDF</li>
       <li>Planilha prática em Excel</li>
       <li>Orientações para organizar custos, receitas, fluxo de caixa e resultados</li>
@@ -216,7 +226,7 @@
     <h2>Uma boa produção não garante, sozinha, um bom resultado</h2>
     <p class="descricao">A lavoura pode estar bonita. A colheita pode ter sido boa. As vendas podem ter acontecido. Mesmo assim, o dinheiro pode não sobrar como você esperava.</p>
     <p class="descricao" style="margin-top:12px;">Isso acontece quando o produtor não consegue visualizar com clareza:</p>
-    <ul class="check">
+    <ul class="check check-left">
       <li>Quanto realmente custa cada cultura</li>
       <li>Quais despesas estão reduzindo o resultado</li>
       <li>Quanto custa produzir cada quilo, caixa, maço ou unidade</li>
@@ -255,7 +265,7 @@
     <div class="cards" style="margin-top:20px;">
       <div class="card"><h3>Faturamento</h3><p>Valor total obtido com as vendas.</p></div>
       <div class="card"><h3>Caixa</h3><p>Dinheiro disponível, considerando entradas e saídas.</p></div>
-      <div class="card"><h3>Lucro</h3><p>O que permanece após os custos da produção e operação.</p></div>
+      <div class="card"><h3>Resultado</h3><p>O que permanece após os custos da produção e operação.</p></div>
     </div>
   </div>
 </section>
@@ -278,7 +288,7 @@
 <section class="bg-cinza center-col">
   <div class="container center-col">
     <h2>Conheça os principais conteúdos do Da Lavoura ao Lucro</h2>
-    <ul class="check" style="margin-top:20px;">
+    <ul class="check check-left" style="margin-top:20px;">
       <li>Diferença entre faturamento, lucro e fluxo de caixa</li>
       <li>Custos fixos, variáveis, diretos e indiretos</li>
       <li>Custos que passam despercebidos</li>
@@ -321,7 +331,7 @@
     </picture>
     <h2>Planilha Da Lavoura ao Lucro, em Excel</h2>
     <p class="descricao">Você não recebe apenas o conteúdo. Recebe também uma ferramenta para começar a aplicar o método.</p>
-    <ul class="check" style="margin-top:20px;">
+    <ul class="check check-left" style="margin-top:20px;">
       <li>Lançamentos de despesas e receitas</li>
       <li>Fluxo de caixa</li>
       <li>Custos Operacionais Efetivos (COE) e Totais (COT)</li>
@@ -369,7 +379,7 @@
 <section class="bg-dourado center-col">
   <div class="container center-col">
     <h2>O Da Lavoura ao Lucro foi pensado para você que:</h2>
-    <ul class="check">
+    <ul class="check check-left">
       <li>Produz hortaliças, frutas ou outros produtos de hortifrúti</li>
       <li>Trabalha em uma pequena ou média propriedade</li>
       <li>Deseja organizar melhor os gastos da produção</li>
@@ -385,7 +395,7 @@
 <section class="bg-inter center-col">
   <div class="container center-col">
     <h2>⚠️ Este material não foi criado para:</h2>
-    <ul class="check" style="color:var(--creme);">
+    <ul class="check check-left" style="color:var(--creme);">
       <li>Substituir um contador, administrador ou consultor especializado</li>
       <li>Apresentar uma fórmula de lucro garantido</li>
       <li>Prometer que toda propriedade terá o mesmo resultado</li>
@@ -398,7 +408,7 @@
 <!-- 12. SOBRE O PRODUTOR (sem nome/foto) -->
 <section class="bg-creme">
   <div class="container center-col">
-    <h2 style="font-size:28px;">O autor por trás do manual</h2>
+    <h2 style="font-size:28px;">O produtor por trás do manual</h2>
     <p style="font-weight:700;font-size:18px;margin-top:6px;">Engenheiro Agrônomo e Produtor Rural</p>
     <p class="descricao" style="margin-top:16px;">Ao longo de sua formação profissional, atuou como RTV (Representante Técnico de Vendas) de fertilizantes, acompanhando de perto a realidade de diferentes produtores e sistemas de cultivo em campo.</p>
     <p class="descricao" style="margin-top:16px;">Essa vivência técnica, aliada à experiência direta na produção rural, revelou um desafio recorrente: a falta de clareza na gestão financeira das propriedades, muitas vezes negligenciada em meio às demandas operacionais do dia a dia.</p>
@@ -412,7 +422,7 @@
     <h2 style="text-align:center;">Tenha o manual e a planilha para organizar melhor a gestão da sua propriedade</h2>
     <div class="cards-col">
       <div class="card"><h3>📘 Manual completo em PDF</h3><p>Conteúdo prático sobre gestão rural, custos, preços, margem, ponto de equilíbrio e planejamento.</p></div>
-      <div class="card"><h3>📊 Planilha prática em Excel</h3><p>Um único arquivo com abas para lançamentos, fluxo de caixa, COE, COT, preço, PE, cenários e margem.</p></div>
+      <div class="card"><h3>📊 Planilha prática em Excel</h3><p>Um único arquivo com abas para lançamentos, fluxo de caixa, COE, COT, preço, cenários e margem.</p></div>
       <div class="card"><h3>💾 Acesso digital</h3><p>Baixe os arquivos e guarde o material para consultar quando precisar.</p></div>
     </div>
   </div>
@@ -450,7 +460,7 @@
         <li>✓ O manual não atende sua necessidade</li>
         <li>✓ Ou simplesmente não quer continuar</li>
       </ul>
-      <p class="garantia-destaque">É só pedir o reembolso, sem burocracia e sem explicação obrigatória.</p>
+      <p class="garantia-destaque">É só pedir o reembolso — sem burocracia e sem explicação obrigatória.</p>
       <p class="garantia-rodape">Essa garantia existe porque acreditamos no valor prático de Da Lavoura ao Lucro.</p>
     </div>
   </div>
@@ -482,7 +492,7 @@
       <img src="https://raw.githubusercontent.com/flowhorta-pag/da-lavoura-ao-lucro/main/imagem-15-pc.png" alt="Produtor analisando documentos" style="max-width:600px;margin-bottom:30px;">
     </picture>
     <h2>A sua propriedade já produz. Agora, os números também precisam fazer parte das decisões.</h2>
-    <ul class="check" style="margin-top:20px;">
+    <ul class="check check-left" style="margin-top:20px;">
       <li>Quanto custa produzir</li>
       <li>Quanto precisa ser vendido</li>
       <li>Qual preço deve ser analisado</li>
@@ -499,7 +509,8 @@
 </section>
 
 <footer>
-  <p>© Horta Flow - Da Lavoura ao Lucro. Pagamento processado pela Hotmart.</p>
+  <p>© Da Lavoura ao Lucro. Pagamento processado pela Hotmart.</p>
+  <p class="direitos-autorais">Todos os direitos sobre a obra Da Lavoura ao Lucro são reservados a Horta Flow, nos termos da Lei nº 9.610/98 (Lei de Direitos Autorais). A reprodução não autorizada desta publicação, no todo ou em parte, por quaisquer meios, constitui violação dos direitos autorais (Art. 184 do Código Penal e Lei 9.610/98), sujeitando os infratores às sanções civis e criminais previstas na legislação aplicável.</p>
 </footer>
 
 <script>
