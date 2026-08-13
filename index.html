@@ -37,12 +37,12 @@
     z-index:1000;
   }
 
-  /* AJUSTE 1: espaço reduzido entre a barra fixa e o selo de segurança */
+  /* AJUSTE 1 (reforçado): espaço ainda menor entre a barra fixa e o selo */
   .selo-seguranca{
     display:inline-flex;align-items:center;gap:8px;
     background:var(--branco);border:1px solid var(--verde-inter);
     border-radius:30px;padding:8px 18px;font-size:14px;font-weight:700;
-    color:var(--verde-escuro);margin:8px auto 8px;
+    color:var(--verde-escuro);margin:0 auto 8px;
   }
 
   .btn{
@@ -72,10 +72,11 @@
   .bg-inter{background:var(--verde-inter);color:var(--branco);}
   .bg-dourado{background:var(--dourado);color:var(--verde-mescuro);}
 
-  /* AJUSTE 2: cor do título igual ao botão CTA, negrito mantido */
-  .titulo-marca{
+  /* AJUSTE 2 (reforçado): cor do título igual ao botão CTA — especificidade maior que .bg-dark p */
+  .titulo-marca,
+  .bg-dark .titulo-marca{
     text-align:center;font-size:30px;font-weight:800;
-    letter-spacing:1px;color:var(--verde-claro);margin-bottom:10px;
+    letter-spacing:1px;color:var(--verde-claro) !important;margin-bottom:10px;
     text-transform:uppercase;
   }
 
@@ -105,14 +106,16 @@
   ul.check li::before{content:"✔";position:absolute;left:0;color:var(--verde-claro);}
   .bg-dourado ul.check li::before,.bg-dourado li{color:var(--verde-mescuro);}
 
-  /* AJUSTE 3: classe para alinhar à esquerda somente listas específicas */
   ul.check.check-left{text-align:left;}
 
   details{background:var(--branco);border:1px solid var(--verde-inter);border-radius:8px;margin-bottom:12px;padding:16px 20px;}
   details summary{font-weight:700;cursor:pointer;color:var(--verde-escuro);font-size:1.15rem;}
 
-  /* AJUSTE 4: cor das respostas do FAQ em verde, sem negrito */
-  details p{margin-top:10px;color:var(--verde-escuro);font-weight:400;font-size:1rem;}
+  /* AJUSTE 4 (reforçado): cor das respostas do FAQ em verde — especificidade maior que .bg-dark p */
+  details p,
+  .bg-dark details p{
+    margin-top:10px;color:var(--verde-escuro) !important;font-weight:400;font-size:1rem;
+  }
 
   .highlight{font-weight:700;color:var(--verde-claro);}
   .bg-creme .highlight,.bg-cinza .highlight,.bg-inter .highlight,.bg-dourado .highlight{color:var(--verde-escuro);}
@@ -145,7 +148,6 @@
 
   footer{background:var(--verde-mescuro);color:var(--creme);text-align:center;padding:30px 0;font-size:15px;}
 
-  /* AJUSTE 5: texto de direitos autorais, fonte 2px menor que a linha acima */
   footer .direitos-autorais{font-size:13px;margin-top:10px;opacity:.85;}
 
   @media(max-width:768px){
@@ -155,7 +157,7 @@
     h1{font-size:24px;}
     h2{font-size:21px;}
     h3{font-size:18px;}
-    .titulo-marca{font-size:26px;color:#8BCB45;}
+    .titulo-marca{font-size:26px;}
     .descricao{font-size:18px;}
     ul.check li{font-size:18px;}
     .card h3{font-size:18px;}
@@ -171,7 +173,9 @@
 
     .price-new{font-size:32px;}
     .price-old{font-size:18px;}
-    .selo-seguranca{margin-top:60px;font-size:15px;}
+
+    /* AJUSTE 1 mobile (reforçado): menos espaço no topo */
+    .selo-seguranca{margin-top:44px;font-size:15px;}
     .btn{font-size:16px;padding:16px 26px;}
   }
 </style>
@@ -182,7 +186,7 @@
 <div class="barra-oferta" id="barraOferta">⚡ OFERTA ESPECIAL DISPONÍVEL APENAS HOJE</div>
 
 <!-- 1. HERO -->
-<section class="bg-dark center-col" style="padding-top:80px;">
+<section class="bg-dark center-col" style="padding-top:56px;">
   <div class="container center-col">
     <div class="selo-seguranca">🔒 Compra 100% segura e protegida</div>
 
